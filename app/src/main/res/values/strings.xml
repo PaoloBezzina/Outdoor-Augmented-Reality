@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Zejtun Churches and Chapels</string>
+    <string name="title_activity_maps">Zejtun Religious Sites</string>
+    <string name="ar_button_desc">Image for AR Button</string>
+    <string name="current_landmark">Current Landmark</string>
+    <string name="date_of_building">Date of building</string>
+    <string name="date">Date:</string>
+    <string name="description">Description:</string>
+    <string name="current_landmark_description">Current landmark description</string>
+</resources>

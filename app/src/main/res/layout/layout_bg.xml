@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <TextView
+        android:id="@+id/landmarkName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/current_landmark"
+        android:textColor="#373737"
+        android:textSize="8sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/date"
+        android:textColor="#000000"
+        android:textSize="6sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/landmarkDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/date_of_building"
+        android:textColor="#373737"
+        android:textSize="6sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/description"
+        android:textColor="#000000"
+        android:textSize="6sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/landmarkDesc"
+        android:layout_width="127dp"
+        android:layout_height="147dp"
+        android:text="@string/current_landmark_description"
+        android:textColor="#373737"
+        android:textSize="6sp" />
+
+</LinearLayout>
