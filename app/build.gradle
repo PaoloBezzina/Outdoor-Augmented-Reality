@@ -52,12 +52,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     implementation "com.google.android.gms:play-services-location:17.0.0"
-/*
-
-    implementation 'com.google.ar:core:1.24.0'
-    implementation 'com.google.ar.sceneform:core:1.4.0'
-    implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.9.0'
-*/
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.0.2'
@@ -75,11 +69,3 @@ dependencies {
 repositories {
     mavenCentral()
 }
-//apply plugin: 'com.google.gms.google-services'
-
-/*
-
-apply plugin: 'com.google.ar.sceneform.plugin'
-sceneform.asset(
-
-)*/

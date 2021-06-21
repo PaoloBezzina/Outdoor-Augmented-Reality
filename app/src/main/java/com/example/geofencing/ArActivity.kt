@@ -106,7 +106,6 @@ class ArActivity : AppCompatActivity() {
             if (augmentedImage.trackingState == TrackingState.TRACKING) {
                 // Check camera image matches our reference image
                 if (augmentedImage.name == "info_tag") {
-                    //createRenderable(augmentedImage)
                     takePhoto(augmentedImage)
                 }
             }
@@ -126,7 +125,6 @@ class ArActivity : AppCompatActivity() {
                 if (barcodes.size > 0) {
                     val sensorId = barcodes[0].displayValue!!
                     if (!names.contains(sensorId)) {
-                        //createRenderable(augmentedImage, sensorId)
                         createRenderable(augmentedImage)
                     }
                 }
@@ -138,7 +136,6 @@ class ArActivity : AppCompatActivity() {
 
     private fun takePhoto(augmentedImage: AugmentedImage) {
 
-        /*ArSceneView view = fragment.getArSceneView();*/
         // Create a bitmap the size of the scene view.
         val bitmap = Bitmap.createBitmap(
             arSceneView.width, arSceneView.height,
@@ -148,12 +145,11 @@ class ArActivity : AppCompatActivity() {
         // Create a handler thread to offload the processing of the image.
         val handlerThread = HandlerThread("PixelCopier")
         handlerThread.start()
-        // Make the request to copy.
+
         try {
             PixelCopy.request(arSceneView, bitmap, { copyResult ->
                 if (copyResult === PixelCopy.SUCCESS) {
                     takeScreenshot(bitmap, augmentedImage)
-                    // println(bitmap)
 
                 } else {
                     Log.d("DrawAR", "Failed to copyPixels: $copyResult")
@@ -216,8 +212,7 @@ class ArActivity : AppCompatActivity() {
                     }
                 }
 
-                // ARCore requires camera permissions to operate. If we did not yet obtain runtime
-                // permission on Android M and above, now is a good time to ask the user for it.
+                // ARCore requires camera permissions to operate. If we did not yet obtained, request them.
                 if (!CameraPermissionHelper.hasCameraPermission(this)) {
                     CameraPermissionHelper.requestCameraPermission(this)
                     return
@@ -256,14 +251,13 @@ class ArActivity : AppCompatActivity() {
             arSceneView.setupSession(session)
         }
 
-        // Note that order matters - see the note in onPause(), the reverse applies here.
         try {
             session!!.resume()
             arSceneView.resume()
         } catch (e: CameraNotAvailableException) {
-            // In some cases (such as another camera app launching) the camera may be given to
-            // a different app instead. Handle this properly by showing a message and recreate the
-            // session at the next iteration.
+            /* In some cases (such as another camera app launching) the camera may be given to
+            a different app instead. Handle this properly by showing a message and recreate the
+            session at the next iteration.*/
             messageSnackbarHelper.showError(this, "Camera not available. Please restart the app.")
             session = null
             return
@@ -271,8 +265,6 @@ class ArActivity : AppCompatActivity() {
 
     }
 
-
-    //private fun createRenderable(augmentedImage: AugmentedImage, name : String) {
     private fun createRenderable(augmentedImage: AugmentedImage) {
         var renderable: ViewRenderable? = null
         try {
@@ -295,7 +287,6 @@ class ArActivity : AppCompatActivity() {
             node.localRotation = Quaternion(pose.qx(), 90f, -90f, pose.qw())
 
             arSceneView.scene.addChild(anchorNode)
-            //setNodeData(renderable!!)
 
             val name = GeofenceBroadcastReceiver.currentGeofenceId
 

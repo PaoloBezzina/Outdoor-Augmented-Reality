@@ -22,9 +22,6 @@ public class GeofenceBroadcastReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        // an Intent broadcast.
-//        Toast.makeText(context, "Geofence triggered...", Toast.LENGTH_SHORT).show();
-
         NotificationHelper notificationHelper = new NotificationHelper(context);
 
         GeofencingEvent geofencingEvent = GeofencingEvent.fromIntent(intent);
@@ -39,7 +36,7 @@ public class GeofenceBroadcastReceiver extends BroadcastReceiver {
             currentGeofenceId = geofence.getRequestId();
             Log.d(TAG, "onReceive: " + geofence.getRequestId());
         }
-//        Location location = geofencingEvent.getTriggeringLocation();
+
         int transitionType = geofencingEvent.getGeofenceTransition();
 
         switch (transitionType) {
@@ -52,15 +49,15 @@ public class GeofenceBroadcastReceiver extends BroadcastReceiver {
             case Geofence.GEOFENCE_TRANSITION_DWELL:
                 arButton.setEnabled(true);
                 arButton.setClickable(true);
-                //Toast.makeText(context, "GEOFENCE_TRANSITION_DWELL", Toast.LENGTH_SHORT).show();
-                //notificationHelper.sendHighPriorityNotification("GEOFENCE_TRANSITION_DWELL", "", MapsActivity.class);
+                //Toast.makeText(context, "AR Still Available", Toast.LENGTH_SHORT).show();
+                //notificationHelper.sendHighPriorityNotification("Still in landmark zone - You may still use AR", "", MapsActivity.class);
                 break;
             case Geofence.GEOFENCE_TRANSITION_EXIT:
                 currentGeofenceId = "NONE";
                 arButton.setEnabled(false);
                 arButton.setClickable(false);
                 Toast.makeText(context, "Leaving area of interest. Ar no longer available", Toast.LENGTH_SHORT).show();
-                //notificationHelper.sendHighPriorityNotification("GEOFENCE_TRANSITION_EXIT", "", MapsActivity.class);
+                //notificationHelper.sendHighPriorityNotification("Leaving AR Zone", "", MapsActivity.class);
                 break;
         }
 
